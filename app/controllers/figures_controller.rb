@@ -18,6 +18,8 @@ class FiguresController < ApplicationController
 
   get '/figures/:id/edit' do
     @figure = Figure.find(params[:id])
+    @landmarks = Landmark.all
+    @titles = Title.all
     erb :'figures/edit'
   end
 
@@ -39,5 +41,10 @@ class FiguresController < ApplicationController
     end
     @figure.save
     redirect to "figures/#{@figure.id}"
+  end
+
+  patch '/figures/:id' do
+    binding.pry
+    redirect "figures/#{@figure.id}"
   end
 end
