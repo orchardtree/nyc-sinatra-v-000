@@ -29,14 +29,13 @@ class FiguresController < ApplicationController
     @title = Title.find_or_create_by(name: params[:title][:name])
     @figure.landmarks << @landmark
     @figure.titles << @title
-
-    params[:landmark_ids].each do |landmark|
+    params[:figure][:landmark_ids].each do |landmark|
       p_landmark_id = landmark.to_i
       p_landmark = Landmark.find(p_landmark_id)
       @figure.landmarks << p_landmark
     end
-    params[:title_ids].each do |title|
-      p_title_id = title.to_i
+    params[:figure][:title_ids].each do |title|
+      p_title_id = title.to_i + 1
       p_title = Title.find(p_title_id)
       @figure.figure_titles.build(title: p_title)
     end
