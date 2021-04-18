@@ -12,7 +12,7 @@
     <input type="text" id="year_completed" value="" name="landmark[year_completed]"></br>
   </br>
     <% @landmarks.each do |landmark| %>
-      <input type="checkbox" id="<%= landmark.name.split(" ").join("-") %>" value="<%= landmark.id %>" name="figure[landmark_ids][]"><%= landmark.name %> - <%= landmark.year_completed %></br>
+      <input type="checkbox" id="landmark_<%= landmark.id %>" value="<%= landmark.id %>" name="figure[landmark_ids][]"><%= landmark.name %> - <%= landmark.year_completed %></br>
     <% end %>
 
   <h4>Create or Add Titles</h4>
@@ -20,7 +20,7 @@
     <input type="text" id="new_title" value="" name="title[name]"></br>
   </br>
     <% @titles.each do |title| %>
-      <input type="checkbox" id="title_<%= title.id - 1 %>" value="<%= title.id - 1 %>" name="figure[title_ids][]"><%= title.name %></br>
+      <input type="checkbox" id="<%= title.id %>" value="<%= title.id %>" name="figure[title_ids][]"><%= title.name %></br>
     <% end %>
   </br>
   <input type="submit" value="Create New Figure">

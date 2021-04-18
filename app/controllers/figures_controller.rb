@@ -29,15 +29,23 @@ class FiguresController < ApplicationController
     @title = Title.find_or_create_by(name: params[:title][:name])
     @figure.landmarks << @landmark
     @figure.titles << @title
-    params[:figure][:landmark_ids].each do |landmark|
-      p_landmark_id = landmark.to_i
-      p_landmark = Landmark.find(p_landmark_id)
-      @figure.landmarks << p_landmark
+
+    p_landmark_ids = params[:figure][:landmark_ids]
+    if p_landmark_ids.size > 0
+      p_landmark_ids.each do |landmark|
+        p_landmark_id = landmark.to_i
+        p_landmark = Landmark.find(p_landmark_id)
+        @figure.landmarks << p_landmark
+      end
     end
-    params[:figure][:title_ids].each do |title|
-      p_title_id = title.to_i + 1
-      p_title = Title.find(p_title_id)
-      @figure.figure_titles.build(title: p_title)
+
+    p_title_ids = params[:figure][:title_ids]
+    if p_title_ids.size > 0
+      p_title_ids.each do |title|
+        p_title_id = title.to_i
+        p_title = Title.find(p_title_id)
+        @figure.figure_titles.build(title: p_title)
+      end
     end
     @figure.save
     redirect to "figures/#{@figure.id}"
