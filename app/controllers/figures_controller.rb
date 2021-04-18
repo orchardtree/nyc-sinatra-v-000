@@ -25,16 +25,17 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure = Figure.find_or_create_by(name: params[:figure][:name])
-    @landmark = Landmark.find_or_create_by(name: params[:figure][:new_landmark][:name], year_completed: params[:figure][:new_landmark][:year_completed])
-    @title = Title.find_or_create_by(name: params[:figure][:new_title][:name])
+    @landmark = Landmark.find_or_create_by(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
+    @title = Title.find_or_create_by(name: params[:title][:name])
     @figure.landmarks << @landmark
     @figure.titles << @title
-    params[:figure][:landmarks].each do |landmark|
+
+    params[:landmark_ids].each do |landmark|
       p_landmark_id = landmark.to_i
       p_landmark = Landmark.find(p_landmark_id)
       @figure.landmarks << p_landmark
     end
-    params[:figure][:titles].each do |title|
+    params[:title_ids].each do |title|
       p_title_id = title.to_i
       p_title = Title.find(p_title_id)
       @figure.figure_titles.build(title: p_title)
