@@ -27,6 +27,6 @@ class LandmarksController < ApplicationController
   end
 
   patch '/landmarks' do
-    "Hello World"
+    redirect to "landmarks/#{@landmark.id}"
   end
 end
