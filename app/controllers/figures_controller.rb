@@ -36,10 +36,10 @@ class FiguresController < ApplicationController
     end
 
     #New title
-    p_title_name = params[:title][:name]
-    if !p_title_name.empty?
-      @title = Title.find_or_create_by(name: p_title_name)
-      add_figure_title = @figure.figure_titles.build(title: @title)
+    title_name = params[:title][:name]
+    if !title_name.empty?
+      title = Title.find_or_create_by(name: title_name)
+      add_figure_title = @figure.figure_titles.build(title: title)
       add_figure_title.save
     end
 
