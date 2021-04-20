@@ -72,9 +72,6 @@ class FiguresController < ApplicationController
 
     @figure = Figure.find(params[:id])
 
-    #Update figure name
-    @figure.update(name: params[:figure][:name])
-
     #Update landmarks (checkboxes) if selections are made
     landmark_edits = params[:figure][:landmark_ids]
     landmarks = @figure.landmarks
@@ -148,6 +145,9 @@ class FiguresController < ApplicationController
       new_title_name = @figure.figure_titles.build(title: title)
       new_title_name.save
     end
+
+    #Update figure name
+    @figure.update(name: params[:figure][:name])
 
     #Redirect
     redirect to "figures/#{@figure.id}"
