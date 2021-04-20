@@ -16,5 +16,6 @@ class LandmarksController < ApplicationController
 
   post '/landmarks' do
     binding.pry
+    Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
   end
 end
