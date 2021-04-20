@@ -124,9 +124,8 @@ describe FiguresController do
     expect(page.current_path).to eq("/figures/#{@original_figure.id}")
     expect(page.body).to include("Missy")
     expect(page.body).to include("Big Tower")
-    binding.pry
-    expect(@updated_figure.name).to eq("Missy")
-    @updated_figure = Figure.first
 
+    @updated_figure = Figure.first
+    expect(@updated_figure.name).to eq("Missy")
   end
 end
