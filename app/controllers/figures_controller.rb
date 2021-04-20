@@ -28,39 +28,39 @@ class FiguresController < ApplicationController
     @figure = Figure.find_or_create_by(name: params[:figure][:name])
 
     #New landmark
-    p_landmark_name = params[:landmark][:name]
-    p_landmark_year = params[:landmark][:year_completed]
-    if !p_landmark_name.empty?
-      @landmark = Landmark.find_or_create_by(name: p_landmark_name, year_completed: p_landmark_year)
+    landmark_name = params[:landmark][:name]
+    landmark_year = params[:landmark][:year_completed]
+    if !landmark_name.empty?
+      @landmark = Landmark.find_or_create_by(name: landmark_name, year_completed: landmark_year)
       @figure.landmarks << @landmark
     end
 
     #New title
-    p_title_name = params[:title][:name]
-    if !p_title_name.empty?
-      @title = Title.find_or_create_by(name: p_title_name)
-      add_figure_title = @figure.figure_titles.build(title: @title)
-      add_figure_title.save
+    title_name = params[:title][:name]
+    if !title_name.empty?
+      title = Title.find_or_create_by(name: title_name)
+      new_figure_title = @figure.figure_titles.build(title: title)
+      new_figure_title.save
     end
 
     #New landmarks (checkboxes)
-    p_landmark_ids = params[:figure][:landmark_ids]
-    if p_landmark_ids != nil
-      p_landmark_ids.each do |landmark|
-        p_landmark_id = landmark.to_i
-        p_landmark = Landmark.find(p_landmark_id)
-        @figure.landmarks << p_landmark
+    landmark_ids = params[:figure][:landmark_ids]
+    if landmark_ids != nil
+      landmark_ids.each do |landmark|
+        landmark_id = landmark.to_i
+        new_landmark = Landmark.find(landmark_id)
+        @figure.landmarks << new_landmark
       end
     end
 
     #New titles (checkboxes)
-    p_title_ids = params[:figure][:title_ids]
+    title_ids = params[:figure][:title_ids]
 
-    if p_title_ids != nil
-      p_title_ids.each do |title|
-        p_title_id = title.to_i
-        p_title = Title.find(p_title_id)
-        new_figure_title = @figure.figure_titles.build(title_id: p_title_id)
+    if title_ids != nil
+      title_ids.each do |title|
+        title_id = title.to_i
+        title = Title.find(title_id)
+        new_figure_title = @figure.figure_titles.build(title_id: title_id)
         new_figure_title.save
       end
     end
@@ -104,10 +104,10 @@ class FiguresController < ApplicationController
     end
 
     #Add landmark name and year if provided
-    p_landmark_name = params[:landmark][:name]
-    p_landmark_year = params[:landmark][:year_completed]
-    if !p_landmark_name.empty?
-      new_landmark_name = Landmark.find_or_create_by(name: p_landmark_name, year_completed: p_landmark_year)
+    landmark_name = params[:landmark][:name]
+    landmark_year = params[:landmark][:year_completed]
+    if !landmark_name.empty?
+      new_landmark_name = Landmark.find_or_create_by(name: landmark_name, year_completed: landmark_year)
       @figure.landmarks << new_landmark_name
     end
 
@@ -142,9 +142,9 @@ class FiguresController < ApplicationController
     end
 
     #Add title name and year if provided
-    p_title_name = params[:title][:name]
-    if !p_title_name.empty?
-      title = Title.find_or_create_by(name: p_title_name)
+    title_name = params[:title][:name]
+    if !title_name.empty?
+      title = Title.find_or_create_by(name: title_name)
       new_title_name = @figure.figure_titles.build(title: title)
       new_title_name.save
     end

@@ -1,7 +1,11 @@
-landmarks index.erb
-<h2>All Historical Landmarks</h2>
+<h1>All Historical Landmarks <a href="/landmarks/new" style="font-size: 16px">(add new landmark)</a></h1>
 
 <!-- add content here -->
+<% @landmarks.each do |landmark| %>
+<ul>
+  <li><%= landmark.name %> - <%= landmark.year_completed %> <a href="/landmarks/<%= landmark.id %>">(link)</a></li>
+</ul>
+<% end %>
 
 <a class="button" href="/figures">Figures</a>
 <a class="button" href="/">Home</a>
