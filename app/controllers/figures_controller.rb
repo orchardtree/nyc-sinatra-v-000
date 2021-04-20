@@ -148,6 +148,7 @@ class FiguresController < ApplicationController
 
     #Update figure name
     @figure.update(name: params[:figure][:name])
+    @figure.save
 
     #Redirect
     redirect to "figures/#{@figure.id}"
