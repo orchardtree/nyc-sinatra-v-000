@@ -44,12 +44,12 @@ class FiguresController < ApplicationController
     end
 
     #New landmarks (checkboxes)
-    p_landmark_ids = params[:figure][:landmark_ids]
-    if p_landmark_ids != nil
-      p_landmark_ids.each do |landmark|
-        p_landmark_id = landmark.to_i
-        p_landmark = Landmark.find(p_landmark_id)
-        @figure.landmarks << p_landmark
+    landmark_ids = params[:figure][:landmark_ids]
+    if landmark_ids != nil
+      landmark_ids.each do |landmark|
+        landmark_id = landmark.to_i
+        new_landmark = Landmark.find(p_landmark_id)
+        @figure.landmarks << new_landmark
       end
     end
 
