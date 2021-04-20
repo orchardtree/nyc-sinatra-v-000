@@ -148,7 +148,7 @@ class FiguresController < ApplicationController
       new_title_name = @figure.figure_titles.build(title: title)
       new_title_name.save
     end
-    binding.pry
+
     #Redirect
     redirect to "figures/#{@figure.id}"
   end
