@@ -1,6 +1,15 @@
 <h1>Edit Historical Landmark</h1>
 
 <!-- add content here -->
-
+<form action="/landmarks" method="post">
+  <label action="_hidden" id="_hidden" name="patch">
+  <label for="new_landmark">Name:</label>
+  <input type="text" id="new_landmark" value="" name="landmark[name]">
+  <label for="year_completed">Year Completed:</label>
+  <input type="text" id="year_completed" value="" name="landmark[year_completed]"></br>
+  </br>
+  <input type="submit" value="Create New Landmark">
+</form>
+</br>
 <a class="button" href="/landmarks">Landmarks</a>
 <a class="button" href="/">Home</a>
