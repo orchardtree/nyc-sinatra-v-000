@@ -127,5 +127,6 @@ describe FiguresController do
 
     expect(@updated_figure.name).to eq("Missy")
     @updated_figure = Figure.first
+    binding.pry
   end
 end
