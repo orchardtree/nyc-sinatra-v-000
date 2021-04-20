@@ -30,8 +30,7 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find(params[:id])
     landmark_name = params[:landmark][:name]
     landmark_year = params[:landmark][:year_completed]
-    @landmark = Landmark.find_or_create_by(name: landmark_name, year_completed: landmark_year)
-
+    @landmark = Landmark.update(name: landmark_name, year_completed: landmark_year)
     redirect to "landmarks/#{@landmark.id}"
   end
 end
