@@ -48,7 +48,7 @@ class FiguresController < ApplicationController
     if landmark_ids != nil
       landmark_ids.each do |landmark|
         landmark_id = landmark.to_i
-        new_landmark = Landmark.find(p_landmark_id)
+        new_landmark = Landmark.find(landmark_id)
         @figure.landmarks << new_landmark
       end
     end
