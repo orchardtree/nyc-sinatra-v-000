@@ -3,8 +3,8 @@
 <!-- add content here -->
 <form action="/landmarks/<%= @landmark.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
-  <label for="landmark_name">Name:</label>
-  <input type="text" id="landmark_name" value="<%= @landmark.name %>" name="landmark[name]">
+  <label for="name">Name:</label>
+  <input type="text" id="name" value="<%= @landmark.name %>" name="landmark[name]">
   <label for="year_completed">Year Completed:</label>
   <input type="text" id="year_completed" value="<%= @landmark.year_completed %>" name="landmark[year_completed]"></br>
   </br>
