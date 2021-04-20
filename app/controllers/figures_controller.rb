@@ -39,8 +39,8 @@ class FiguresController < ApplicationController
     title_name = params[:title][:name]
     if !title_name.empty?
       title = Title.find_or_create_by(name: title_name)
-      add_figure_title = @figure.figure_titles.build(title: title)
-      add_figure_title.save
+      new_figure_title = @figure.figure_titles.build(title: title)
+      new_figure_title.save
     end
 
     #New landmarks (checkboxes)
