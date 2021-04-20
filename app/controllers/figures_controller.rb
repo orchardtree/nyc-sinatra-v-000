@@ -74,7 +74,7 @@ class FiguresController < ApplicationController
 
     #Update figure name
     @figure.update(name: params[:figure][:name])
-    binding.pry
+
     #Update landmarks (checkboxes) if selections are made
     landmark_edits = params[:figure][:landmark_ids]
     landmarks = @figure.landmarks
