@@ -104,10 +104,10 @@ class FiguresController < ApplicationController
     end
 
     #Add landmark name and year if provided
-    p_landmark_name = params[:landmark][:name]
-    p_landmark_year = params[:landmark][:year_completed]
-    if !p_landmark_name.empty?
-      new_landmark_name = Landmark.find_or_create_by(name: p_landmark_name, year_completed: p_landmark_year)
+    landmark_name = params[:landmark][:name]
+    landmark_year = params[:landmark][:year_completed]
+    if !landmark_name.empty?
+      new_landmark_name = Landmark.find_or_create_by(name: landmark_name, year_completed: landmark_year)
       @figure.landmarks << new_landmark_name
     end
 
