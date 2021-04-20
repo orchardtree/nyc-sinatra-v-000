@@ -13,4 +13,8 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find(params[:id])
     erb :'landmarks/show'
   end
+
+  post '/landmarks' do
+    
+  end
 end
