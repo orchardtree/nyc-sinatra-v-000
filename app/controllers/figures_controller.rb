@@ -54,13 +54,13 @@ class FiguresController < ApplicationController
     end
 
     #New titles (checkboxes)
-    p_title_ids = params[:figure][:title_ids]
+    title_ids = params[:figure][:title_ids]
 
-    if p_title_ids != nil
-      p_title_ids.each do |title|
-        p_title_id = title.to_i
-        p_title = Title.find(p_title_id)
-        new_figure_title = @figure.figure_titles.build(title_id: p_title_id)
+    if title_ids != nil
+      title_ids.each do |title|
+        title_id = title.to_i
+        title = Title.find(title_id)
+        new_figure_title = @figure.figure_titles.build(title_id: title_id)
         new_figure_title.save
       end
     end
