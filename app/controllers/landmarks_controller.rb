@@ -17,7 +17,7 @@ class LandmarksController < ApplicationController
   post '/landmarks' do
     landmark_name = params[:landmark][:name]
     landmark_year = params[:landmark][:year_completed]
-    Landmark.find_or_create(name: landmark_name, year_completed: landmark_year)
-    redirect to :'/landmarks/:id'
+    @landmark = Landmark.find_or_create(name: landmark_name, year_completed: landmark_year)
+    redirect to "landmarks/#{@landmark.id}"
   end
 end
