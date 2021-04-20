@@ -15,6 +15,6 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    
+
   end
 end
